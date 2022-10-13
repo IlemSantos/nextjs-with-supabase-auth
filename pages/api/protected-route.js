@@ -1,3 +1,4 @@
+// pages/api/protected-route.js
 import { withApiAuth } from '@supabase/auth-helpers-nextjs'
 
 export default withApiAuth(async function ProtectedRoute(

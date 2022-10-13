@@ -1,3 +1,4 @@
+import { ChakraProvider } from '@chakra-ui/react'
 import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { SessionContextProvider } from '@supabase/auth-helpers-react'
 import { useRouter } from 'next/router'
@@ -12,16 +13,10 @@ export default function MyApp({ Component, pageProps }) {
       supabaseClient={supabaseClient}
       initialSession={pageProps.initialSession}
     >
-      <button
-        onClick={async () => {
-          await supabaseClient.auth.signOut()
-          router.push('/')
-        }}
-      >
-        Logout
-      </button>
 
-      <Component {...pageProps} />
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
     </SessionContextProvider>
   )
 }
