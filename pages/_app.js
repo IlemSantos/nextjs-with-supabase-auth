@@ -15,8 +15,16 @@ export default function MyApp({ Component, pageProps }) {
     >
 
       <ChakraProvider>
+        <button
+          onClick={async () => {
+            await supabaseClient.auth.signOut();
+            router.push('/');
+          }}
+        >
+          Logout
+        </button>
         <Component {...pageProps} />
       </ChakraProvider>
     </SessionContextProvider>
-  )
+  );
 }
